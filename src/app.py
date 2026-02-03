@@ -19,5 +19,3 @@ def healthy():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
-
-http://amax.zhong:69549779@ssl-15ez6r-xxxx-0.catspac.com:3389
