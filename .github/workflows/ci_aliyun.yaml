@@ -38,3 +38,20 @@ jobs:
           tags: |
             crpi-zwbmpse5bz48kucd.cn-shanghai.personal.cr.aliyuncs.com/amaxzhong/python-app:latest
             crpi-zwbmpse5bz48kucd.cn-shanghai.personal.cr.aliyuncs.com/amaxzhong/python-app:${{ env.sha_short }}
+
+
+      - name: Update Helm Image Tag
+        run: |
+          # 1. Update the tag in your values file
+          # This assumes your helm/values.yaml has a structure like `image: { tag: "..." }`
+          # We use 'sed' to replace the old tag with the new short SHA
+          sed -i 's/tag: .*/tag: "${{ env.sha_short }}"/g' helm/values.yaml
+
+          # 2. Configure Git
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 3. Commit and Push
+          git add helm/values.yaml
+          git commit -m "chore: update image tag to ${{ env.sha_short }} [skip ci]"
+          git push
