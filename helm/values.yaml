@@ -3,7 +3,7 @@ replicaCount: 3
 image:
   repository: crpi-zwbmpse5bz48kucd.cn-shanghai.personal.cr.aliyuncs.com/amaxzhong/python-app
   pullPolicy: IfNotPresent
-  tag: "v2"
+  tag: "137a1b8"
 
 imagePullSecrets: 
   - name: aliyun-registry-secret
