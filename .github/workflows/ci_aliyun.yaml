@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main  # 当你向 main 分支 push 代码时触发
-  paths-ignore:
-        - 'helm/**'
-        - 'README.md'
-        - '.gitignore'
+    paths-ignore:
+          - 'helm/**'
+          - 'README.md'
+          - '.gitignore'
   workflow_dispatch: # 额外添加这个：允许你在 GitHub 页面上点击按钮手动触发（方便调试）
 
 jobs:
