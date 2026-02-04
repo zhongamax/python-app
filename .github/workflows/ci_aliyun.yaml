@@ -45,7 +45,10 @@ jobs:
           # 1. Update the tag in your values file
           # This assumes your helm/values.yaml has a structure like `image: { tag: "..." }`
           # We use 'sed' to replace the old tag with the new short SHA
-          sed -i 's/tag: .*/tag: "${{ env.sha_short }}"/g' helm/values.yaml
+          # sed -i 's/tag: .*/tag: "${{ env.sha_short }}"/g' helm/values.yaml
+          # recommend to use yq command to replace tag value
+          run: |
+            yq -i '.image.tag = "${{ env.sha_short }}"' helm/values.yaml
 
           # 2. Configure Git
           git config --global user.name "github-actions[bot]"
